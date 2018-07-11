@@ -154,7 +154,7 @@ LoadSNPData <- function(filename = NULL, genome.lib = "BSgenome.Hsapiens.UCSC.hg
     rsid.missing.all <- NULL
     while(TRUE) {
     	snps <- get(snp.lib)
-        snp.loc <- tryCatch({snpid2loc(snps, snpids)}, error = function(e) return(e$message))
+        snp.loc <- tryCatch({snpsById(snps, snpids)}, error = function(e) return(e$message))
         ## remove rsids not included in the database
         if(class(snp.loc) == "character") {
           rsid.missing <- myStrSplit(snp.loc, split = c(": ", "\n"))[[1]][-1]
@@ -167,7 +167,7 @@ LoadSNPData <- function(filename = NULL, genome.lib = "BSgenome.Hsapiens.UCSC.hg
           rsid.missing <- paste("rs", rsid.missing, sep = "")
 	  rsid.missing.all <- c(rsid.missing.all, rsid.missing)
           snpids <- snpids[!snpids %in% rsid.missing]
-          snp.loc <- tryCatch({snpid2loc(snps, snpids)}, error = function(e) return(e$message))
+          snp.loc <- tryCatch({snpsById(snps, snpids)}, error = function(e) return(e$message))
         } else {
 	  break
 	}
@@ -178,10 +178,9 @@ LoadSNPData <- function(filename = NULL, genome.lib = "BSgenome.Hsapiens.UCSC.hg
       rsid.missing <- rsid.missing.all
     }
 
-    snp.alleles <- snpid2alleles(snps, snpids)
-    snp.alleles <- IUPAC_CODE_MAP[snp.alleles]
-    gr <- snpid2grange(snps, snpids)
-    snp.strands <- as.character(GenomicRanges::as.data.frame(gr)$strand)
+     snp.gpos <- snpsById(snps, snpids)
+     snp.alleles <- IUPAC_CODE_MAP[snp.gpos@elementMetadata@listData$alleles_as_ambig]
+     snp.strands<-as.character(snp.gpos@strand)
     if(sum(nchar(snp.alleles) > 2) > 0) {
       message("Warning: the following SNPs have more than 2 alleles. All pairs of nucleotides are considered as pairs of the SNP and the reference allele:")
       rsid.duplicate <- snpids[nchar(snp.alleles) > 2]
@@ -214,9 +213,8 @@ LoadSNPData <- function(filename = NULL, genome.lib = "BSgenome.Hsapiens.UCSC.hg
       	    	          a2[id.rev] <- rev.codes[a2[id.rev]]
 		      }
  		      tbl <- rbind(tbl,
-		          data.frame(
-                            snp = snp.loc.n,
-		            chr = as.character(sub("ch", "chr", names(snp.loc.n))),
+		          data.frame(snp = as.numeric(snp.loc.n@ranges), 
+                    chr = as.character(paste0("chr", snp.loc.n@seqnames)), 			  
 		            a1 = as.character(a1),
                             a2 = as.character(a2),
 		            snpid = as.character(snp.ids.n),
