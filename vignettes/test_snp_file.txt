@@ -1,0 +1,3 @@
+snpid a1 a2 chr snp
+rs53576 A G chr3 8762685
+rs7412 C T chr19 44908822
