@@ -10,8 +10,8 @@ Description: atSNP performs affinity tests of motif matches with the SNP or the 
 License: GPL-2
 LinkingTo: Rcpp
 Depends: R (>= 3.6)
-Suggests: testthat, BiocStyle, knitr, rmarkdown
-Imports: BSgenome, BiocFileCache, BiocParallel, Rcpp, data.table, ggplot2, grDevices, graphics, grid, motifStack, rappdirs, stats, testit, utils
+Suggests: BiocStyle, knitr, rmarkdown
+Imports: BSgenome, BiocFileCache, BiocParallel, Rcpp, data.table, ggplot2, grDevices, graphics, grid, motifStack, rappdirs, stats, testthat, utils
 RoxygenNote: 6.1.1
 biocViews: Software, ChIPSeq, GenomeAnnotation, MotifAnnotation, Visualization
 URL: https://github.com/sunyoungshin/atSNP
