@@ -132,7 +132,6 @@ match.subseq_result[c("snpid", "motif", "IUPAC", "ref_match_seq", "snp_match_seq
 ## ----eval=TRUE, echo=TRUE, fig.align="center", fig.height=6, fig.width=6, warning=TRUE, dpi=600, include=TRUE, results="markup"----
 match.seq<-dtMotifMatch(atsnp.scores$snp.tbl, atsnp.scores$motif.scores, snpids="rs53576", motifs="SIX5_disc1", motif.lib = motif_library)
 plotMotifMatch(match.seq,  motif.lib = motif_library)
-graphics.off()
 
 
 ## ----eval=TRUE,echo=FALSE,results="markup",cache=FALSE----------------------------------------------------
