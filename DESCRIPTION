@@ -1,7 +1,7 @@
 Package: atSNP
 Type: Package
 Title: Affinity test for identifying regulatory SNPs
-Version: 1.7.5
+Version: 1.7.6
 Date: 2021-4-26
 Authors@R: c(person(given = "Chandler", family = "Zuo", role = "aut"),
         person(given = "Sunyoung",family = "Shin",role = c("aut", "cre"), email = "sunyoung.shin@utdallas.edu"),
@@ -10,7 +10,7 @@ Description: atSNP performs affinity tests of motif matches with the SNP or the 
 License: GPL-2
 LinkingTo: Rcpp
 Depends: R (>= 3.6)
-Suggests: BiocStyle, knitr, rmarkdown
+Suggests: testthat, BiocStyle, knitr, rmarkdown
 Imports: BSgenome, BiocFileCache, BiocParallel, Rcpp, data.table, ggplot2, grDevices, graphics, grid, motifStack, rappdirs, stats, testthat, utils, lifecycle
 RoxygenNote: 6.1.1
 biocViews: Software, ChIPSeq, GenomeAnnotation, MotifAnnotation, Visualization

@@ -55,7 +55,7 @@ LoadMotifLibrary <- function(filename = NULL, urlname = NULL, tag = "MOTIF", tra
       stop("only one argument among 'filename' and 'urlname' should be provided.")
   }
   if(is.null(filename)) {
-    bfc <- BiocFileCache()  
+    bfc <- BiocFileCache()
     rid <- bfcrid(bfcquery(bfc, query=basename(urlname), exact=TRUE, field="rname"))
     if (!length(rid))
       rid <- names(bfcadd(bfc, rname=basename(urlname), urlname))
@@ -436,7 +436,7 @@ LoadFastaData <- function(ref.filename = NULL, snp.filename = NULL,
       stop("only one argument among 'ref.filename' and 'ref.urlname' should be provided.")
   }
   if(is.null(ref.filename)) {
-    bfc <- BiocFileCache()  
+    bfc <- BiocFileCache()
     ref.rid <- bfcrid(bfcquery(bfc, query=basename(ref.urlname), exact=TRUE, field="rname"))
     if (!length(ref.rid))
       ref.rid <- names(bfcadd(bfc, rname=basename(ref.urlname), ref.urlname))
