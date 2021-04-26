@@ -452,7 +452,7 @@ LoadFastaData <- function(ref.filename = NULL, snp.filename = NULL,
       stop("only one argument among 'snp.filename' and 'snp.urlname' should be provided.")
   }
   if(is.null(snp.filename)) {
-    bfc <- BiocFileCache(cache = user_cache_dir(appname = "BiocFileCache"), ask = FALSE)
+    bfc <- BiocFileCache()
     snp.rid <- bfcrid(bfcquery(bfc, query=basename(snp.urlname), exact=TRUE, field="rname"))
     if (!length(snp.rid))
       snp.rid <- names(bfcadd(bfc, rname=basename(snp.urlname), snp.urlname))
