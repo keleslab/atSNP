@@ -3,11 +3,13 @@
 \docType{data}
 \name{encode_motif}
 \alias{encode_motif}
-\title{A motif library containing 2065 motifs downloaded from http://compbio.mit.edu/encode-motifs/motifs.txt.}
+\title{A motif library containing 2065 motifs downloaded from 
+http://compbio.mit.edu/encode-motifs/motifs.txt.}
 \format{A list object.}
 \description{
 This motif library can be loaded by 'data(encode_library)'.
 }
 \author{
-Chandler Zuo zuo@stat.wisc.edu
+Sunyoung Shin \email{sunyoung.shin@utdallas.edu}, Chandler Zuo 
+\email{chandler.c.zuo@gmail.com}
 }

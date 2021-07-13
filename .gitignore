@@ -1,4 +1,10 @@
+inst/doc
 *.R~
 src/*.o
 src/*.so
 .Rproj.user
+.Rhistory
+*.Rproj
+*.dll
+atSNP-Ex.pdf
+*.timings
